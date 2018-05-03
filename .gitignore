@@ -1,0 +1,9 @@
+tests/*.retry
+tests/.cache
+tests/__pycache__
+.molecule
+.vagrant
+.cache
+*.retry
+Pipfile
+Pipfile.lock

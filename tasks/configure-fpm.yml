@@ -1,0 +1,30 @@
+---
+
+- name: PHP | Template php-fpm configuration file
+  template:
+    src: php-fpm.conf.j2
+    dest: "{{ php_fpm_configuration_template.dest }}"
+  notify: restart php-fpm
+
+- name: PHP | Delete default php-fpm config
+  file:
+    path: "{{ php_install_dir }}/etc/php-fpm.conf.default"
+    state: absent
+
+- name: PHP | Create symbolic link between log folders
+  file:
+    src: "{{ php_install_dir }}/var/log"
+    dest: /var/log/php-fpm
+    state: link
+
+- name: PHP | Template php-fpm service file
+  template:
+    src: php-fpm.service.j2
+    dest: "{{ php_unit_file_dir }}/php-fpm.service"
+  notify: restart php-fpm
+
+- name: PHP | Ensure php-fpm executable is symlinked into a standard path.
+  file:
+    src: "{{ php_install_dir }}/sbin/php-fpm"
+    dest: /usr/sbin/php-fpm
+    state: link

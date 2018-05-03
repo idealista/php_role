@@ -1,0 +1,3 @@
+---
+
+php_download_url: "http://{{ php_download_mirror_domain }}/get/php-{{ php_version }}.tar.gz/from/this/mirror"

@@ -1,0 +1,31 @@
+---
+
+command:
+  ./{{ php_install_dir }}/bin/php --version:
+    exit-status: 0
+    stdout:
+      - "{{ php_version }}"
+
+# Check templated php.ini
+
+file:
+  /lib/systemd/system/php-fpm.service:
+    exists: true
+  {{ php_fpm_configuration_template.dest }}:
+    exists: true
+  {{ php_install_dir }}:
+    exists: true
+    filetype: directory
+
+process:
+  php-fpm:
+    running: true
+
+service:
+  php-fpm:
+    enabled: true
+    running: true
+
+port:
+  tcp:{{ php_fpm_listen_port }}:
+    listening: true

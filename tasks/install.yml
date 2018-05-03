@@ -1,0 +1,47 @@
+---
+
+- name: PHP | Install required libs
+  apt:
+    name: "{{ item }}"
+    update_cache: true
+    cache_valid_time: 86400
+  with_items: "{{ php_required_libs }}"
+
+- name: PHP | Ensure download dir
+  file:
+    path: "{{ php_download_dir }}"
+    state: directory
+
+- name: PHP | Download and extract PHP source files
+  unarchive:
+    remote_src: true
+    src: "{{ php_download_url }}"
+    dest: "{{ php_download_dir }}"
+    extra_opts: --strip-components=1
+
+- name: PHP | Define extra compile-time options if defined
+  set_fact:
+    php_compile_options_command: "{{ php_compile_options_command | default('') }} {{ '--' + item }}"
+  with_items: "{{ php_compile_options }}"
+  when: php_compile_options is defined
+
+- name: PHP | Add FPM to compile-time options
+  set_fact:
+    php_compile_options_command: "{{ php_compile_options_command | default('') }} --enable-fpm"
+  when: php_fpm_install
+
+- name: PHP | Configure installation
+  command: ./configure --prefix={{ php_install_dir }} {{ php_compile_options_command | default('') }}
+  args:
+    chdir: "{{ php_download_dir }}"
+  tags: skip_ansible_lint
+
+- name: PHP | Make
+  make:
+    chdir: "{{ php_download_dir }}"
+    params: "--jobs={{ ansible_processor_cores }}"
+
+- name: PHP | Make install
+  make:
+    chdir: "{{ php_download_dir }}"
+    target: install

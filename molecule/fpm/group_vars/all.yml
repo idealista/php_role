@@ -1,0 +1,20 @@
+---
+# FPM
+php_fpm_install: true
+php_fpm_service_enabled: true
+
+php_fpm_listen_port: 8999
+
+php_fpm_pool_definitions:
+  www:
+    # root user is not allowed
+    user: www-data
+    # root group is not allowed
+    group: www-data
+    listen: "127.0.0.1:{{ php_fpm_listen_port }}"
+    pm:
+      type: dynamic
+      max_children: 10
+      start_servers: 2
+      min_spare_servers: 2
+      max_spare_servers: 4

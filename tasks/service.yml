@@ -1,0 +1,9 @@
+---
+
+- name: PHP | Configuring PHP-FPM service
+  systemd:
+    name: "php-fpm"
+    state: "{{ php_fpm_service_started }}"
+    enabled: "{{ php_fpm_service_enabled }}"
+    daemon_reload: "yes"
+  when: php_fpm_install

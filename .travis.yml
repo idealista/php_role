@@ -1,0 +1,24 @@
+---
+language: python
+python: "2.7.13"
+sudo: required
+group: deprecated-2017Q4
+
+env:
+  - ansible_version: 2.4.0.0
+  - ansible_version: 2.4.1.0
+  - ansible_version: 2.4.2.0
+  - ansible_version: 2.4.3.0
+  - ansible_version: 2.5.0.0
+
+services:
+  - docker
+install:
+  - pip install pipenv
+  - pipenv install -r test-requirements.txt --python 2.7
+  - pipenv install ansible ${ansible_version}
+script:
+  - pipenv run molecule test --all
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

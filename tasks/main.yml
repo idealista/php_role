@@ -1,0 +1,28 @@
+---
+
+- name: PHP | Check
+  import_tasks: check.yml
+  tags:
+    - install
+
+- name: PHP | Install
+  import_tasks: install.yml
+  tags:
+    - install
+  when: php_reinstall or not php_is_installed or php_new_version
+
+- name: PHP | Configure PHP
+  import_tasks: configure-php.yml
+  tags:
+    - configure
+
+- name: PHP | Configure FPM
+  import_tasks: configure-fpm.yml
+  tags:
+    - configure
+  when: php_fpm_install
+
+- name: PHP | Service
+  import_tasks: service.yml
+  tags:
+    - service

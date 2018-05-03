@@ -1,0 +1,95 @@
+---
+
+php_version: 7.2.4
+php_reinstall: false
+
+# Available PHP mirrors can be found here: http://php.net/mirrors.php
+php_download_mirror_domain: es1.php.net
+
+# Files & Paths
+php_download_dir: "/usr/src/php_{{ php_version }}"
+php_install_dir: "/usr/local/php{{ php_version.split('.') | first }}"
+php_unit_file_dir: "/lib/systemd/system/"
+php_pid_file: /run/php-fpm.pid
+
+# Required libs & Compile options
+php_required_libs:
+  - autoconf
+  - automake
+  - bison
+  - flex
+  - libtool
+  - re2c
+  - libxml2-dev
+  - bzip2
+  - libbz2-dev
+  - zlib1g
+  - zlib1g-dev
+  - libjpeg-dev
+  - libpng-dev
+  - libfreetype6-dev
+  - libgmp-dev
+  - libpspell-dev
+  - librecode-dev
+
+php_compile_options:
+  - enable-mbstring
+  - enable-zip
+  - enable-bcmath
+  - enable-pcntl
+  - enable-ftp
+  - enable-exif
+  - enable-calendar
+  - enable-opcache
+  - enable-pdo
+  - enable-sysvmsg
+  - enable-sysvsem
+  - enable-sysvshm
+  - enable-wddx
+  - enable-gd-jis-conv
+  - with-iconv
+  - with-gmp
+  - with-pspell
+  - with-gd
+  - with-jpeg-dir=/usr
+  - with-png-dir=/usr
+  - with-zlib-dir=/usr
+  - with-freetype-dir=/usr
+  - with-openssl=no
+  - with-gettext=/usr
+  - with-zlib=/usr
+  - with-bz2=/usr
+  - with-recode=/usr
+
+# FPM
+php_fpm_install: false
+
+php_fpm_configuration_template:
+  src: templates/php/fpm/php-fpm.conf.j2
+  dest: "{{ php_install_dir }}/etc/php-fpm.conf"
+
+php_fpm_configuration:
+  # alert, error, warning, notice, debug
+  log_level: notice
+  # 0 indicates no limit
+  process_max: 0
+  daemonize: "yes"
+  # process_priority: # Also available to be configured, check php-fpm.conf.j2
+  # rlimit_core: # Also available to be configured, check php-fpm.conf.j2
+  # rlimit_files: # Also available to be configured, check php-fpm.conf.j2
+
+# Sample pool definition
+# php_fpm_pool_definitions:
+#   www:
+#     user: www-data
+#     group: www-data
+#     listen: 127.0.0.1:8999
+#     pm:
+#       type: dynamic
+#       max_children: 10
+#       start_servers: 2
+#       min_spare_servers: 2
+#       max_spare_servers: 4
+
+php_fpm_service_enabled: false
+php_fpm_service_started: started

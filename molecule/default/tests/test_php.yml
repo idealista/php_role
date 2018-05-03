@@ -1,0 +1,7 @@
+---
+
+command:
+  ./{{ php_install_dir }}/bin/php --version:
+    exit-status: 0
+    stdout:
+      - "{{ php_version }}"
