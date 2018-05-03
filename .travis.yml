@@ -5,11 +5,14 @@ sudo: required
 group: deprecated-2017Q4
 
 env:
-  - ansible_version: 2.4.0.0
-  - ansible_version: 2.4.1.0
-  - ansible_version: 2.4.2.0
-  - ansible_version: 2.4.3.0
-  - ansible_version: 2.5.0.0
+  global:
+    - PIPENV_IGNORE_VIRTUALENVS=1
+  matrix:
+    - ansible_version: 2.4.0.0
+    - ansible_version: 2.4.1.0
+    - ansible_version: 2.4.2.0
+    - ansible_version: 2.4.3.0
+    - ansible_version: 2.5.0.0
 
 services:
   - docker
