@@ -7,7 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: phptestnode
-    image: ${MOLECULE_DISTRO:-debian:stretch-slim}
+    image: ${DOCKER_BASE_IMAGE:-debian:stretch-slim}
     privileged: true
     capabilities:
       - SYS_ADMIN
