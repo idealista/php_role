@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *Updated molecule and its configurations* @frantsao
 - *Updated installation environment (debian new packages)* @frantsao
 - *Updated travis tests* @frantsao
+- *Renamed role* @frantsao
 
 ## [1.0.0](https://github.com/idealista/php_role/tree/1.0.0)
 ### Added
