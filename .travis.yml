@@ -1,27 +1,20 @@
 ---
+dist: xenial
 language: python
-python: "2.7.13"
-sudo: required
-group: deprecated-2017Q4
-
-env:
-  global:
-    - PIPENV_IGNORE_VIRTUALENVS=1
-  matrix:
-    - ansible_version: 2.4.0.0
-    - ansible_version: 2.4.1.0
-    - ansible_version: 2.4.2.0
-    - ansible_version: 2.4.3.0
-    - ansible_version: 2.5.0.0
-
+python: "3.7"
+os: linux
 services:
   - docker
+env:
+  jobs:
+    - DOCKER_BASE_IMAGE=debian:stretch-slim
+    - DOCKER_BASE_IMAGE=debian:buster-slim
 install:
   - pip install pipenv
-  - pipenv install -r test-requirements.txt --python 2.7
-  - pipenv install ansible ${ansible_version}
+  - pipenv sync
 script:
-  - pipenv run molecule test --all
+  - export DOCKER_BASE_IMAGE=${DOCKER_BASE_IMAGE}
+  - molecule test --all
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
