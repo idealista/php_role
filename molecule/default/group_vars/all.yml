@@ -6,5 +6,3 @@ php_download_dir: "/usr/src/php_{{ php_version }}"
 php_install_dir: "/usr/local/php{{ php_version.split('.') | first }}"
 php_unit_file_dir: "/lib/systemd/system/"
 php_pid_file: /run/php-fpm.pid
-
-

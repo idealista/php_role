@@ -14,7 +14,7 @@ platforms:
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
     command: '/lib/systemd/systemd'
-    groups: 
+    groups:
       - phptest
 provisioner:
   name: ansible
@@ -27,4 +27,3 @@ verifier:
   lint:
     name: yamllint
     enabled: false
-
