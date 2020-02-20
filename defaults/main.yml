@@ -86,7 +86,10 @@ php_fpm_configuration:
 #   www:
 #     user: www-data
 #     group: www-data
-#     listen: 127.0.0.1:8999
+#     listen: /run/php-fpm.sock
+#     listen.owner: www-data
+#     listen.group: www-data
+#     listen.mode: "0660"
 #     pm:
 #       type: dynamic
 #       max_children: 10
