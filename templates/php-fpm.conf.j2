@@ -143,6 +143,15 @@ rlimit_core = {{ php_fpm_configuration.rlimit_core }}
 user = {{ value.user }}
 group = {{ value.group }}
 listen = {{ value.listen }}
+{% if value.listen_owner is defined %}
+listen.owner =  {{ value.listen_owner }}
+{% endif %}
+{% if value.listen_group is defined %}
+listen.group =  {{ value.listen_group }}
+{% endif %}
+{% if value.listen_mode is defined %}
+listen.mode =  {{ value.listen_mode }}
+{% endif %}
 pm = {{ value.pm.type }}
 pm.max_children = {{ value.pm.max_children }}
 pm.start_servers = {{ value.pm.start_servers }}
