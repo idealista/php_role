@@ -1,6 +1,6 @@
 ---
 
-php_version: 7.2.4
+php_version: 7.4.2
 php_reinstall: false
 
 # Available PHP mirrors can be found here: http://php.net/mirrors.php
@@ -21,6 +21,8 @@ php_required_libs:
   - libtool
   - re2c
   - libxml2-dev
+  - pkg-config
+  - libsqlite3-dev
   - bzip2
   - libbz2-dev
   - zlib1g
@@ -31,6 +33,7 @@ php_required_libs:
   - libgmp-dev
   - libpspell-dev
   - librecode-dev
+  - libonig-dev
 
 php_compile_options:
   - enable-mbstring
@@ -83,7 +86,10 @@ php_fpm_configuration:
 #   www:
 #     user: www-data
 #     group: www-data
-#     listen: 127.0.0.1:8999
+#     listen: /run/php-fpm.sock
+#     listen.owner: www-data
+#     listen.group: www-data
+#     listen.mode: "0660"
 #     pm:
 #       type: dynamic
 #       max_children: 10

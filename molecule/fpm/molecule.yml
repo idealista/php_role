@@ -6,14 +6,16 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: php.cont
-    image: geerlingguy/docker-debian9-ansible:latest
+  - name: phptestnode
+    image: ${DOCKER_BASE_IMAGE:-debian:stretch-slim}
     privileged: true
     capabilities:
       - SYS_ADMIN
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
     command: '/lib/systemd/systemd'
+    groups:
+      - phptest
 provisioner:
   name: ansible
   lint:
@@ -23,4 +25,5 @@ scenario:
 verifier:
   name: goss
   lint:
-    name: flake8
+    name: yamllint
+    enabled: false
