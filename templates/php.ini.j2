@@ -383,7 +383,7 @@ expose_php = On
 ; Maximum execution time of each script, in seconds
 ; http://php.net/max-execution-time
 ; Note: This directive is hardcoded to 0 for the CLI SAPI
-max_execution_time = 30
+max_execution_time = {{ php_max_execution_time }}
 
 ; Maximum amount of time each script may spend parsing request data. It's a good
 ; idea to limit this time on productions servers in order to eliminate unexpectedly
@@ -393,18 +393,18 @@ max_execution_time = 30
 ; Development Value: 60 (60 seconds)
 ; Production Value: 60 (60 seconds)
 ; http://php.net/max-input-time
-max_input_time = 60
+max_input_time = {{ php_max_input_time }}
 
 ; Maximum input variable nesting level
 ; http://php.net/max-input-nesting-level
-;max_input_nesting_level = 64
+max_input_nesting_level = {{ php_max_input_nesting_level }}
 
 ; How many GET/POST/COOKIE input variables may be accepted
-;max_input_vars = 1000
+max_input_vars = {{ php_max_input_vars }}
 
 ; Maximum amount of memory a script may consume (128MB)
 ; http://php.net/memory-limit
-memory_limit = 128M
+memory_limit = {{ php_memory_limit }}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Error handling and logging ;
@@ -672,7 +672,7 @@ auto_globals_jit = On
 ; Its value may be 0 to disable the limit. It is ignored if POST data reading
 ; is disabled through enable_post_data_reading.
 ; http://php.net/post-max-size
-post_max_size = 8M
+post_max_size = {{ php_post_max_size }}
 
 ; Automatically add files before PHP document.
 ; http://php.net/auto-prepend-file
@@ -824,10 +824,10 @@ file_uploads = On
 
 ; Maximum allowed size for uploaded files.
 ; http://php.net/upload-max-filesize
-upload_max_filesize = 2M
+upload_max_filesize = {{ php_upload_max_filesize }}
 
 ; Maximum number of files that can be uploaded via a single request
-max_file_uploads = 20
+max_file_uploads = {{ php_max_file_uploads }}
 
 ;;;;;;;;;;;;;;;;;;
 ; Fopen wrappers ;
