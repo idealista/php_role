@@ -10,6 +10,7 @@ php_download_mirror_domain: es1.php.net
 php_download_dir: "/usr/src/php_{{ php_version }}"
 php_install_dir: "/usr/local/php{{ php_version.split('.') | first }}"
 php_unit_file_dir: "/lib/systemd/system/"
+php_pid_file: /run/php-fpm.pid
 php_max_execution_time: 30
 php_max_input_time: 60
 php_max_input_nesting_level: 64

@@ -5,7 +5,8 @@ Description=The PHP FastCGI Process Manager
 After=syslog.target network.target
 
 [Service]
-Type=simple
+Type=forking
+PIDFile={{ php_pid_file }}
 ExecStart=/usr/sbin/php-fpm --fpm-config {{ php_fpm_configuration_template.dest }}
 ExecReload=/bin/kill -USR2 $MAINPID
 
