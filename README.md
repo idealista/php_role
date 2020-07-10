@@ -23,10 +23,10 @@ These instructions will get you a copy of the role for your Ansible playbook. On
 
 ### Prerequisities
 
-Ansible >= 2.8.x.x version installed.
+Ansible >= 2.9.x.x version installed.
 Inventory destination should be a Debian environment.
 
-For testing purposes, [Molecule](https://molecule.readthedocs.io/) (version 2.x) with [Docker](https://www.docker.com/) as provider.
+For testing purposes, [Molecule](https://molecule.readthedocs.io/) (version 3.x) with [Docker](https://www.docker.com/) as provider.
 
 ### Installing
 
@@ -34,7 +34,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 
 ``` yml
 - src: idealista.php_role
-  version: 1.1.0
+  version: 1.2.0
   name: php
 ```
 
@@ -82,7 +82,9 @@ molecule test -s fpm
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.8.8.0-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-2.9.9-green.svg)
+![Molecule](https://img.shields.io/badge/molecule-3.0.4-green.svg)
+![Goss](https://img.shields.io/badge/goss-0.3.13-green.svg)
 
 ## Versioning
 

@@ -2,7 +2,7 @@
 
 - name: PHP | Template php-fpm configuration file
   template:
-    src: php-fpm.conf.j2
+    src: "{{ php_fpm_configuration_template.src }}"
     dest: "{{ php_fpm_configuration_template.dest }}"
   notify: restart php-fpm
 
@@ -19,8 +19,8 @@
 
 - name: PHP | Template php-fpm service file
   template:
-    src: php-fpm.service.j2
-    dest: "{{ php_unit_file_dir }}/php-fpm.service"
+    src: "{{ php_fpm_service_configuration_template.src }}"
+    dest: "{{ php_fpm_service_configuration_template.dest }}"
   notify: restart php-fpm
 
 - name: PHP | Ensure php-fpm executable is symlinked into a standard path.
