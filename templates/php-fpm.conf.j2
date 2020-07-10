@@ -143,6 +143,9 @@ rlimit_core = {{ php_fpm_configuration.rlimit_core }}
 user = {{ value.user }}
 group = {{ value.group }}
 listen = {{ value.listen }}
+{% if value.clear_env is defined %}
+clear_env = {{ value.clear_env }}
+{% endif %}
 {% if value.listen_owner is defined %}
 listen.owner =  {{ value.listen_owner }}
 {% endif %}

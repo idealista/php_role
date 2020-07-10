@@ -3,14 +3,19 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  yamllint .
+  ansible-lint .
 platforms:
   - name: phptestnode
     image: ${DOCKER_BASE_IMAGE:-debian:stretch-slim}
-    privileged: true
+    privileged: false
     capabilities:
       - SYS_ADMIN
+    tmpfs:
+      - '/tmp'
+      - '/run'
+      - '/run/lock'
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
     command: '/lib/systemd/systemd'
@@ -23,7 +28,4 @@ provisioner:
 scenario:
   name: default
 verifier:
-  name: goss
-  lint:
-    name: yamllint
-    enabled: false
+  name: ansible

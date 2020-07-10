@@ -2,8 +2,8 @@
 
 - name: PHP | Template php.ini
   template:
-    src: php.ini.j2
-    dest: "{{ php_install_dir }}/lib/php.ini"
+    src: "{{ php_ini_configuration_template.src }}"
+    dest: "{{ php_ini_configuration_template.dest }}"
 
 - name: PHP | Ensure php executable is symlinked into a standard path.
   file:

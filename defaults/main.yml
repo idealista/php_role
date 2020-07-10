@@ -11,6 +11,18 @@ php_download_dir: "/usr/src/php_{{ php_version }}"
 php_install_dir: "/usr/local/php{{ php_version.split('.') | first }}"
 php_unit_file_dir: "/lib/systemd/system/"
 php_pid_file: /run/php-fpm.pid
+php_max_execution_time: 30
+php_max_input_time: 60
+php_max_input_nesting_level: 64
+php_max_input_vars: 1000
+php_memory_limit: 128M
+php_upload_max_filesize: 2M
+php_max_file_uploads: 20
+php_post_max_size: 8M
+
+php_ini_configuration_template:
+  src: php.ini.j2
+  dest: "{{ php_install_dir }}/lib/php.ini"
 
 # Required libs & Compile options
 php_required_libs:
@@ -68,8 +80,11 @@ php_compile_options:
 php_fpm_install: false
 
 php_fpm_configuration_template:
-  src: templates/php/fpm/php-fpm.conf.j2
+  src: php-fpm.conf.j2
   dest: "{{ php_install_dir }}/etc/php-fpm.conf"
+php_fpm_service_configuration_template:
+  src: php-fpm.service.j2
+  dest: "{{ php_unit_file_dir }}/php-fpm.service"
 
 php_fpm_configuration:
   # alert, error, warning, notice, debug
