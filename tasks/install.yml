@@ -38,7 +38,7 @@
 - name: PHP | Make
   make:
     chdir: "{{ php_download_dir }}"
-    params: "--jobs={{ ansible_processor_cores }}"
+    params: "--jobs={{ php_make_jobs }}"
 
 - name: PHP | Make install
   make:
