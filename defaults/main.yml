@@ -25,6 +25,7 @@ php_ini_configuration_template:
   dest: "{{ php_install_dir }}/lib/php.ini"
 
 # Required libs & Compile options
+php_make_jobs: "{{ ansible_processor_vcpus }}"
 php_required_libs:
   - autoconf
   - automake
