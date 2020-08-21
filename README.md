@@ -34,7 +34,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 
 ``` yml
 - src: idealista.php_role
-  version: 1.2.0
+  version: 1.3.0
   name: php
 ```
 
