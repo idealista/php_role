@@ -5,3 +5,8 @@ command:
     exit-status: 0
     stdout:
       - "{{ php_version }}"
+
+  composer --version:
+    exit-status: 0
+    stdout:
+      - "{{ php_composer_version }}"

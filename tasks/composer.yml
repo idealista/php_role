@@ -12,6 +12,21 @@
     dest: /usr/src/composer-setup.php
   when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
 
+- name: Get and verify composer checksum
+  block:
+    - name: PHP | Get composer installer checksum
+      stat:
+        path: /usr/src/composer-setup.php
+        checksum_algorithm: sha384
+        get_checksum: yes
+      register: shell_stat
+
+    - name: PHP | Verify composer installer checksum
+      fail:
+        msg: "Failure, composer installer is not correct."
+      when: shell_stat.stat.checksum != '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3'
+  when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
+
 - name: PHP | Ensure composer install dir
   file:
     path: "{{ php_composer_install_dir }}"
