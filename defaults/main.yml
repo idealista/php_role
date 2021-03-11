@@ -120,5 +120,8 @@ php_fpm_service_started: started
 # Composer
 php_composer_install: false
 php_composer_install_dir: /opt/composer
+php_composer_link_path: /usr/local/bin/composer
 php_composer_version: 2.0.11
 php_composer_reinstall: false
+php_composer_installer_path: /usr/src/composer-setup.php
+php_composer_installer_url: https://getcomposer.org/installer
