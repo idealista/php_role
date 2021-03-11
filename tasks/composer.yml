@@ -1,24 +1,30 @@
 ---
 
-# TODO check if it has been installed
+- name: PHP | Check composer version
+  command: "composer --version"
+  register: php_composer_check
+  changed_when: false
+  ignore_errors: true
 
 - name: PHP | Download composer installer
   get_url:
     url: "https://getcomposer.org/installer"
     dest: /usr/src/composer-setup.php
-
-# TODO checksum
+  when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
 
 - name: PHP | Ensure composer install dir
   file:
     path: "{{ php_composer_install_dir }}"
     state: directory
+  when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
 
 - name: PHP | Install composer
-  command: "php /usr/src/composer-setup.php --filename=composer --install-dir={{ php_composer_install_dir }}"
+  command: "php /usr/src/composer-setup.php --filename=composer --install-dir={{ php_composer_install_dir }} --version={{ php_composer_version }}"
+  when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
 
 - name: PHP | Link composer file
   file:
     src: "{{ php_composer_install_dir }}/composer"
     dest: /usr/local/bin/composer
     state: link
+  when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
