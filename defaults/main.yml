@@ -47,6 +47,7 @@ php_required_libs:
   - libpspell-dev
   - librecode-dev
   - libonig-dev
+  - libssl-dev
 
 php_compile_options:
   - enable-mbstring
@@ -71,7 +72,7 @@ php_compile_options:
   - with-png-dir=/usr
   - with-zlib-dir=/usr
   - with-freetype-dir=/usr
-  - with-openssl=no
+  - with-openssl=yes
   - with-gettext=/usr
   - with-zlib=/usr
   - with-bz2=/usr
@@ -115,3 +116,7 @@ php_fpm_configuration:
 
 php_fpm_service_enabled: false
 php_fpm_service_started: started
+
+# Composer
+php_composer_install: false
+php_composer_install_dir: /opt/composer
