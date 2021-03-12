@@ -2,7 +2,7 @@
 
 # PHP Ansible role
 
-[![Build Status](https://travis-ci.org/idealista/php_role.png)](https://travis-ci.org/idealista/php_role)
+[![Build Status](https://travis-ci.com/idealista/php_role.png)](https://travis-ci.com/idealista/php_role)
 
 This Ansible role installs PHP (optionally, with FPM enabled) in a Debian environment.
 
@@ -34,7 +34,7 @@ Create or add to your roles dependency file (e.g requirements.yml):
 
 ``` yml
 - src: idealista.php_role
-  version: 1.3.0
+  version: 1.4.0
   name: php
 ```
 
@@ -56,6 +56,8 @@ Use in a playbook:
 ## Usage
 
 Look to the [defaults](defaults/main.yml) properties file to see all possible configuration properties.
+
+If you also want to install composer set the variable `php_composer_install` to `true`. Also its version can be changed by overriding the variable `php_composer_version`.
 
 ## Testing
 

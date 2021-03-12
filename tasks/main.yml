@@ -26,3 +26,9 @@
   import_tasks: service.yml
   tags:
     - service
+
+- name: PHP | Install composer
+  import_tasks: composer.yml
+  tags:
+    - composer
+  when: php_composer_install
