@@ -24,7 +24,7 @@
     - name: PHP | Verify composer installer checksum
       fail:
         msg: "Failure, composer installer is not correct."
-      when: installer_stat.stat.checksum != '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3'
+      when: installer_stat.stat.checksum != php_composer_installer_checksum
   when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
 
 - name: PHP | Ensure composer install dir
