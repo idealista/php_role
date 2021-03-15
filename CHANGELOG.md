@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/php_role/tree/develop)
+## [1.4.0](https://github.com/idealista/php_role/tree/1.4.0) (2021-03-15)
+## [Full Changelog](https://github.com/idealista/php_role/compare/1.3.0...1.4.0)
+### Added
+- *[#10](https://github.com/idealista/php_role/issues/10) Add optional composer installation* @caldito
 
 ## [1.3.0](https://github.com/idealista/php_role/tree/1.3.0)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/1.2.0...1.3.0)
