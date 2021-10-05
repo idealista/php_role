@@ -8,7 +8,7 @@ lint: |
   ansible-lint .
 platforms:
   - name: phptestnode
-    image: ${DOCKER_BASE_IMAGE:-debian:stretch-slim}
+    image: ${MOLECULE_DISTRO:-debian:stretch-slim}
     privileged: false
     capabilities:
       - SYS_ADMIN
@@ -19,12 +19,11 @@ platforms:
       - '/run'
       - '/run/lock'
     command: '/lib/systemd/systemd'
+    stop_signal: 'RTMIN+3'
     groups:
       - phptest
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
 scenario:
   name: fpm
 verifier:

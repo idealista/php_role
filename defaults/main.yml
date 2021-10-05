@@ -125,4 +125,4 @@ php_composer_version: 2.0.11
 php_composer_reinstall: false
 php_composer_installer_path: /usr/src/composer-setup.php
 php_composer_installer_url: https://getcomposer.org/installer
-php_composer_installer_checksum: 756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3
+php_composer_sha384_url: https://composer.github.io/installer.sha384sum
