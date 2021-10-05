@@ -1,20 +1,25 @@
 ---
-dist: xenial
+dist: bionic
 language: python
-python: "3.8"
+python: "3.9"
 os: linux
 services:
   - docker
 env:
   jobs:
-    - DOCKER_BASE_IMAGE=debian:stretch-slim
-    - DOCKER_BASE_IMAGE=debian:buster-slim
+    - MOLECULE_DISTRO=debian:stretch-slim
+    - MOLECULE_DISTRO=debian:buster-slim
 install:
   - pip install pipenv
   - pipenv sync
 script:
-  - export DOCKER_BASE_IMAGE=${DOCKER_BASE_IMAGE}
-  - travis_wait 30 pipenv run molecule test --all
+  - pipenv run molecule test --all
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  email:
+    if: branch = main
+    on_success: change
+    on_failure: always
+    recipients:
+      - desarrollo.benders@idealista.com
