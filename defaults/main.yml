@@ -166,18 +166,5 @@ php_composer_installer_path: /usr/src/composer-setup.php
 php_composer_installer_url: https://getcomposer.org/installer
 php_composer_sha384_url: https://composer.github.io/installer.sha384sum
 
-# NodeJS
-php_node_install: false
-php_node_version: 16
-php_node_apt_repository: "https://deb.nodesource.com/setup_{{ php_node_version }}.x"
-
-# Yarn:
-php_yarn_install: false
-php_yarn_apt_gpg: https://dl.yarnpkg.com/debian/pubkey.gpg
-php_yarn_apt_source: "deb https://dl.yarnpkg.com/debian/ stable main"
-php_yarn_name: yarn
-php_yarn_version: 1.22.15
-php_yarn_version_id: 1
-
 php_pear_packages: []
 php_pecl_extension_config: []

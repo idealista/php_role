@@ -10,8 +10,3 @@ command:
     exit-status: 0
     stdout:
       - "{{ php_composer_version }}"
-
-  yarn --version:
-    exit-status: 0
-    stdout:
-      - "{{ php_yarn_version }}"
