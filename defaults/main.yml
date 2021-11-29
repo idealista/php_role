@@ -152,7 +152,6 @@ php_fpm_configuration:
 #       start_servers: 2
 #       min_spare_servers: 2
 #       max_spare_servers: 4
-#       clear_env: yes
 
 php_fpm_service_enabled: false
 php_fpm_service_started: started
