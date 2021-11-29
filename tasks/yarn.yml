@@ -1,0 +1,31 @@
+- name: PHP | Install Node
+  block:
+    - name: PHP | Add NodeJS Repository
+      shell: curl -fsSL {{ php_node_apt_repository }} | bash -
+    
+    - name: PHP | Install NodeJS
+      apt:
+        name: nodejs
+        state: present
+        update_cache: yes
+        install_recommends: no
+  when: php_node_install
+
+- name: PHP | add Yarn apt-key
+  apt_key:
+    url: "{{ php_yarn_apt_gpg }}"
+    state: present
+
+- name: PHP | add Yarn repository
+  apt_repository:
+    repo: "{{ php_yarn_apt_source }}"
+    state: present
+    filename: yarn
+    update_cache: yes
+
+- name: PHP | Install Yarn
+  apt:
+    name: "{{ php_yarn_name }}={{ php_yarn_version }}-{{ php_yarn_version_id }}"
+    state: present
+    update_cache: yes
+    install_recommends: no

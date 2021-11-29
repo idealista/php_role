@@ -44,3 +44,13 @@
   make:
     chdir: "{{ php_download_dir }}"
     target: install
+
+- name: PHP | Set Pear tmp directory
+  shell: "mkdir -p /root/tmp && {{ php_install_dir }}/bin/pear config-set temp_dir /root/tmp"
+  ignore_errors: no
+
+- name: PHP | Installing pear packages
+  shell: "printf '\n' | {{ php_install_dir }}/bin/pecl install {{ item }}"
+  loop: "{{ php_pear_packages }}"
+  changed_when: false
+  ignore_errors: yes

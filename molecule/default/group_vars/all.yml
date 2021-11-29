@@ -1,5 +1,5 @@
 ---
-php_version: 7.4.2
+php_version: 7.4.25
 
 # Files & Paths
 php_download_dir: "/usr/src/php_{{ php_version }}"
@@ -8,3 +8,13 @@ php_unit_file_dir: "/lib/systemd/system/"
 php_pid_file: /run/php-fpm.pid
 php_composer_install: true
 php_composer_version: 2.0.11
+php_node_install: true
+php_node_version: 16
+php_yarn_install: true
+php_yarn_version: "1.22.15"
+
+php_pear_packages:
+  - pecl/imagick-3.4.4
+
+php_pecl_extension_config:
+  - imagick.so

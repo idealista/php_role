@@ -32,3 +32,9 @@
   tags:
     - composer
   when: php_composer_install
+
+- name: PHP | Install Yarn
+  import_tasks: yarn.yml
+  tags:
+    - yarn
+  when: php_yarn_install
