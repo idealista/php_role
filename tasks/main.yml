@@ -16,6 +16,12 @@
   tags:
     - configure
 
+- name PHP | Configure PCL
+  import_tasks: pecl.yml
+  tags:
+    - configure
+  when: php_pear_packages is defined and php_pear_packages.keys()|length > 0
+
 - name: PHP | Configure FPM
   import_tasks: configure-fpm.yml
   tags:

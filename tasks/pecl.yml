@@ -1,0 +1,15 @@
+---
+
+- name: PHP | Create Pear tmp directory
+  file:
+      dest: "{{ php_pear_tmp_path }}"
+      state: directory
+
+- name: PHP | Set Pear tmp directory
+  shell: "{{ php_install_dir }}/bin/pear config-set temp_dir {{ php_pear_tmp_path }}"
+  ignore_errors: no
+
+- name: PHP | Installing Pear packages
+  include: pecl-install-library item={{ item }}
+  with_items: "{{ php_pear_packages }}"
+  ignore_errors: no

@@ -13,8 +13,7 @@ php_node_version: 16
 php_yarn_install: true
 php_yarn_version: "1.22.15"
 
+php_pear_tmp_path: "/root/tmp"
 php_pear_packages:
-  - pecl/imagick-3.4.4
-
-php_pecl_extension_config:
-  - imagick.so
+  - { name: 'timezonedb', library: 'pecl/timezonedb', version: '2018.4', type: 'extension' }
+  - { name: 'imagick', library: 'pecl/imagick', version: '3.4.4', type: 'extension' }

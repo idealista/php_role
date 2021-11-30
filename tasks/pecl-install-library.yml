@@ -1,0 +1,33 @@
+---
+
+- name: PHP | Pecl check if library {{ item.name }} exists
+  shell: "{{ php_install_dir }}/bin/pecl list | grep {{ item.name }}"
+  register: php_pecl_library_system_info
+  ignore_errors: true
+
+- set_fact:
+    php_pecl_library_installed: false
+    php_pecl_library_installed_version: ""
+
+- set_fact:
+    php_pecl_library_installed: true
+    php_pecl_library_installed_version: "{{ php_pecl_library_system_info.stdout_lines[0].split()[1] }}"
+  when: php_pecl_library_system_info.stdout != ''
+
+- name: PHP | Install {{ item.name }} library
+  shell: "printf '\n' | {{ php_install_dir }}/bin/pecl install {{ item.library }}-{{ item.version }}"
+  when: php_pecl_library_installed is false
+
+- name: PHP | Upgrade/Downgrade {{ item.name }} library
+  block:
+    - name: PHP | Uninstall {{ item.name }} because actual version is {{ php_pecl_library_installed_version }}
+      shell: "printf '\n' | {{ php_install_dir }}/bin/pecl uninstall {{ item.library }}"
+    - name: PHP | Install {{ item.name }} version {{ item.version }}
+      shell: "printf '\n' | {{ php_install_dir }}/bin/pecl install {{ item.library }}-{{ item.version }}"
+  when: php_pecl_library_installed is true and php_pecl_library_installed_version != item.version
+
+- name: PHP | Create Ini file for {{ item.name }} library
+  ansible.builtin.template:
+    src: "{{ playbook_dir }}/templates/php/pecl_extension.ini.j2"
+    dest: "{{ php_include_ini_dir }}/99-{{ item.name }}_{{ item.type }}.ini"
+  when: php_pecl_library_installed is false or php_pecl_library_installed_version != item.version

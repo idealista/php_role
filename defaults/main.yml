@@ -9,6 +9,7 @@ php_download_mirror_domain: es1.php.net
 # Files & Paths
 php_download_dir: "/usr/src/php_{{ php_version }}"
 php_install_dir: "/usr/local/php{{ php_version.split('.') | first }}"
+php_include_ini_dir: "{{ php_install_dir }}/lib/php-ini.d"
 php_unit_file_dir: "/lib/systemd/system/"
 php_pid_file: /run/php-fpm.pid
 php_max_execution_time: 30
@@ -166,5 +167,9 @@ php_composer_installer_path: /usr/src/composer-setup.php
 php_composer_installer_url: https://getcomposer.org/installer
 php_composer_sha384_url: https://composer.github.io/installer.sha384sum
 
-php_pear_packages: []
-php_pecl_extension_config: []
+# Pecl
+php_pear_tmp_path: "/root/tmp"
+php_pear_packages:
+  - { name: 'timezonedb', library: 'pecl/timezonedb', version: '2018.4', type: 'extension' }
+  - { name: 'imagick', library: 'pecl/imagick', version: '3.4.4', type: 'extension' }
+
