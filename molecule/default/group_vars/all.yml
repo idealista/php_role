@@ -8,10 +8,6 @@ php_unit_file_dir: "/lib/systemd/system/"
 php_pid_file: /run/php-fpm.pid
 php_composer_install: true
 php_composer_version: 2.0.11
-php_node_install: true
-php_node_version: 16
-php_yarn_install: true
-php_yarn_version: "1.22.15"
 
 php_pear_tmp_path: "/root/tmp"
 php_pear_packages:

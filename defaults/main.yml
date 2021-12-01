@@ -2,7 +2,6 @@
 
 php_version: 7.4.25
 php_reinstall: false
-
 # Available PHP mirrors can be found here: http://php.net/mirrors.php
 php_download_mirror_domain: es1.php.net
 
@@ -123,7 +122,6 @@ php_compile_options:
 
 # FPM
 php_fpm_install: false
-
 php_fpm_configuration_template:
   src: php-fpm.conf.j2
   dest: "{{ php_install_dir }}/etc/php-fpm.conf"
@@ -140,7 +138,6 @@ php_fpm_configuration:
   # process_priority: # Also available to be configured, check php-fpm.conf.j2
   # rlimit_core: # Also available to be configured, check php-fpm.conf.j2
   # rlimit_files: # Also available to be configured, check php-fpm.conf.j2
-
 # Sample pool definition
 # php_fpm_pool_definitions:
 #   www:
@@ -156,7 +153,6 @@ php_fpm_configuration:
 #       start_servers: 2
 #       min_spare_servers: 2
 #       max_spare_servers: 4
-
 php_fpm_service_enabled: false
 php_fpm_service_started: started
 
@@ -175,4 +171,3 @@ php_pear_tmp_path: "/root/tmp"
 php_pear_packages:
   - { name: 'timezonedb', library: 'pecl/timezonedb', version: '2018.4', type: 'extension' }
   - { name: 'imagick', library: 'pecl/imagick', version: '3.4.4', type: 'extension' }
-
