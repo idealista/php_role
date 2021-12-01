@@ -16,7 +16,7 @@
   tags:
     - configure
 
-- name PHP | Configure PCL
+- name: PHP | Configure PCL
   import_tasks: pecl.yml
   tags:
     - configure

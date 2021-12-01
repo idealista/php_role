@@ -13,3 +13,4 @@
   include: pecl-install-library item={{ item }}
   with_items: "{{ php_pear_packages }}"
   ignore_errors: no
+  when: php_pear_packages is defined and php_pear_packages|length > 0
