@@ -24,7 +24,7 @@ php_post_max_size: 8M
 
 php_ini_configuration_template:
   src: php.ini.j2
-  dest: "{{ php_install_dir }}/lib/php.ini"
+  dest: "{{ php_include_ini_dir }}/php.ini"
 
 # Required libs & Compile options
 php_make_jobs: "{{ ansible_processor_vcpus }}"
