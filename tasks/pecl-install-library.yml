@@ -37,13 +37,8 @@
         executable: /bin/bash
   when: php_pecl_library_installed is true and php_pecl_library_installed_version != item.version
 
-- name: PHP | Check that the 99-{{ item.name }}_{{ item.type }} configuration file exists
-  stat:
-    path: "{{ php_include_ini_scan_dir }}/99-{{ item.name }}_{{ item.type }}.ini"
-  register: php_stat_result
-
 - name: PHP | Create Ini file for {{ item.name }} library
   template:
     src: "pecl_extension.ini.j2"
     dest: "{{ php_include_ini_scan_dir }}/99-{{ item.name }}_{{ item.type }}.ini"
-  when: php_pecl_library_installed is false or php_pecl_library_installed_version != item.version or not php_stat_result.stat.exists
+  when: php_pecl_library_installed is false or php_pecl_library_installed_version != item.version
