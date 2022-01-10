@@ -1,5 +1,5 @@
 ---
-php_version: 7.4.2
+php_version: 7.4.25
 
 # Files & Paths
 php_download_dir: "/usr/src/php_{{ php_version }}"
@@ -8,3 +8,8 @@ php_unit_file_dir: "/lib/systemd/system/"
 php_pid_file: /run/php-fpm.pid
 php_composer_install: true
 php_composer_version: 2.0.11
+
+php_pear_tmp_path: "/root/tmp"
+php_pear_packages:
+  - { name: 'timezonedb', library: 'pecl/timezonedb', version: '2018.4', type: 'extension' }
+  - { name: 'imagick', library: 'pecl/imagick', version: '3.4.4', type: 'extension' }

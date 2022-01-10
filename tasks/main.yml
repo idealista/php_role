@@ -9,12 +9,18 @@
   import_tasks: install.yml
   tags:
     - install
-  when: php_reinstall or not php_is_installed or php_new_version
+  when: php_reinstall or php_installed is false or php_change_version
 
 - name: PHP | Configure PHP
   import_tasks: configure-php.yml
   tags:
     - configure
+
+- name: PHP | Configure PCL
+  import_tasks: pecl.yml
+  tags:
+    - configure
+  when: php_pear_packages is defined and php_pear_packages|length > 0
 
 - name: PHP | Configure FPM
   import_tasks: configure-fpm.yml
