@@ -1,15 +1,26 @@
 ---
 
 - name: PHP | Check if PHP is installed and which version
-  command: php --version
-  register: php_command_output
+  shell: "set -o pipefail && php --version"
+  args:
+    executable: /bin/bash
+  register: php_check_install
+  ignore_errors: true
   changed_when: false
-  failed_when: false
 
-- name: PHP | Set installed fact
-  set_fact:
-    php_is_installed: "{% if php_command_output.stdout is defined and 'PHP Group' in php_command_output.stdout %}True{% else %}False{% endif %}"
 
-- name: PHP | Set new version fact
+- name: PHP | Set Initial Fact
   set_fact:
-    php_new_version: "{% if php_command_output.stdout is defined and php_version not in php_command_output.stdout %}True{% else %}False{% endif %}"
+    php_installed: false
+    php_change_version: false
+
+- name: PHP | Set Fact for version
+  set_fact:
+    php_installed: true
+    php_installed_version: "{{ php_check_install.stdout_lines[0].split()[1] }}"
+  when: php_check_install.stdout | length > 0
+
+- name: PHP | Compare requested version
+  set_fact:
+    php_change_version: true
+  when: php_installed is true and php_installed_version != php_version
