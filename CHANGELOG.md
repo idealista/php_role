@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Unreleased](https://github.com/idealista/php_role/tree/develop)
 ### Added
 - *[#23](https://github.com/idealista/php_role/issues/21) Debian bullseye support.
+### Removed
+- Debian Stretch support
 
 ## [3.0.0](https://github.com/idealista/php_role/tree/2.0.0) (2022-01-10)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/2.0.0...3.0.0)
