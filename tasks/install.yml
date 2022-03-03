@@ -11,10 +11,20 @@
     path: "{{ php_download_dir }}"
     state: directory
 
-- name: PHP | Download and extract PHP source files
+- name: PHP | Ensure curl is installed
+  apt:
+    pkg: curl
+    state: present
+
+- name: PHP | Download PHP source files
+  command: "curl {{ php_download_url }} -L -o /tmp/php-{{ php_version }}.tar.gz"
+  when: not php_installed or php_change_version
+  tags: skip_ansible_lint
+
+- name: PHP | Extract PHP source files
   unarchive:
     remote_src: true
-    src: "{{ php_download_url }}"
+    src: "/tmp/php-{{ php_version }}.tar.gz"
     dest: "{{ php_download_dir }}"
     extra_opts: --strip-components=1
 
