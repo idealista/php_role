@@ -8,6 +8,11 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Removed
 ### Changed
 
+## [3.1.1](https://github.com/idealista/php_role/tree/3.1.1) (2022-03-04)
+## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.0...3.1.1)
+### Changed
+- *[#26](https://github.com/idealista/php_role/issues/26) Use cURL to download the sources* @blalop
+
 ## [3.1.0](https://github.com/idealista/php_role/tree/3.1.0) (2022-02-07)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.0.0...3.1.0)
 ### Added

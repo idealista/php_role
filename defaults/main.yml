@@ -4,6 +4,7 @@ php_version: 7.4.25
 php_reinstall: false
 # Available PHP mirrors can be found here: http://php.net/mirrors.php
 php_download_mirror_domain: es1.php.net
+php_download_url: "http://{{ php_download_mirror_domain }}/get/php-{{ php_version }}.tar.gz/from/this/mirror"
 
 # Files & Paths
 php_download_dir: "/usr/src/php_{{ php_version }}"
