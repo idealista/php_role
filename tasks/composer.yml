@@ -1,7 +1,7 @@
 ---
 
 - name: PHP | Check composer version
-  command: "composer --version"
+  command: "composer --version -n"
   register: php_composer_check
   changed_when: false
   ignore_errors: true
