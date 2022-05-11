@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/php_role/tree/develop)
 ### Added
+- *[#32](https://github.com/idealista/php_role/issues/32) Add option arg in extension pecl.
 ### Removed
 ### Changed
 
