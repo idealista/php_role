@@ -5,9 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/php_role/tree/develop)
 ### Added
-- *[#32](https://github.com/idealista/php_role/issues/32) Add option arg in extension pecl.
 ### Removed
 ### Changed
+
+## [3.1.2](https://github.com/idealista/php_role/tree/3.1.2) (2022-05-12)
+## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.1...3.1.2)
+### Added
+- *[#32](https://github.com/idealista/php_role/issues/32) Add option arg in extension pecl.
 
 ## [3.1.1](https://github.com/idealista/php_role/tree/3.1.1) (2022-03-04)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.0...3.1.1)
