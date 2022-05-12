@@ -20,7 +20,7 @@
   when: php_pecl_library_system_info.stdout | length > 0
 
 - name: PHP | Install {{ item.name }} library
-  shell: "set -o pipefail && printf '\n' | {{ php_install_dir }}/bin/pecl install {{ item.library }}-{{ item.version }}"
+  shell: "set -o pipefail && printf {{ item.arg | default('\n') | quote  }} | {{ php_install_dir }}/bin/pecl install {{ item.library }}-{{ item.version }}"
   args:
     executable: /bin/bash
   when: php_pecl_library_installed is false
@@ -28,11 +28,11 @@
 - name: PHP | Upgrade/Downgrade {{ item.name }} library
   block:
     - name: PHP | Uninstall {{ item.name }} because actual version is {{ php_pecl_library_installed_version }}
-      shell: "set -o pipefail && printf '\n' | {{ php_install_dir }}/bin/pecl uninstall {{ item.library }}"
+      shell: "set -o pipefail && printf {{ item.arg | default('\n') | quote }} | {{ php_install_dir }}/bin/pecl uninstall {{ item.library }}"
       args:
         executable: /bin/bash
     - name: PHP | Install {{ item.name }} version {{ item.version }}
-      shell: "set -o pipefail && printf '\n' | {{ php_install_dir }}/bin/pecl install {{ item.library }}-{{ item.version }}"
+      shell: "set -o pipefail && printf {{ item.arg | default('\n') | quote }} | {{ php_install_dir }}/bin/pecl install {{ item.library }}-{{ item.version }}"
       args:
         executable: /bin/bash
   when: php_pecl_library_installed is true and php_pecl_library_installed_version != item.version
