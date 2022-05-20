@@ -8,6 +8,10 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Removed
 ### Changed
 ### Fixed
+
+## [3.1.2](https://github.com/idealista/php_role/tree/3.1.3) (2022-05-23)
+## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.2...3.1.3)
+### Fixed
 - *[#35](https://github.com/idealista/php_role/issues/35) [BUG] php_reinstall flag is not working properly* @emepege
 
 ## [3.1.2](https://github.com/idealista/php_role/tree/3.1.2) (2022-05-12)
