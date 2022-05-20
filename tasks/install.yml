@@ -18,7 +18,6 @@
 
 - name: PHP | Download PHP source files
   command: "curl {{ php_download_url }} -L -o /tmp/php-{{ php_version }}.tar.gz"
-  when: not php_installed or php_change_version
   tags: skip_ansible_lint
   # using curl as get_url receives 503 error - see https://github.com/idealista/php_role/issues/26
 
