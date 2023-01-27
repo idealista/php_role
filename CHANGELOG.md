@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Added
 ### Removed
 ### Changed
+- *[#38](https://github.com/idealista/php_role/issues/38) Change source download.
 ### Fixed
 
 ## [3.1.2](https://github.com/idealista/php_role/tree/3.1.3) (2022-05-23)
