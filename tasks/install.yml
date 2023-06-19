@@ -44,6 +44,12 @@
     dest: "{{ php_include_ini_scan_dir }}"
     state: directory
 
+- name: PHP | Buildconf
+  command: ./buildconf --force
+  args:
+    chdir: "{{ php_download_dir }}"
+  tags: skip_ansible_lint
+
 - name: PHP | Configure installation
   command: ./configure --prefix={{ php_install_dir }} {{ php_compile_options_command | default('') }}
   args:
