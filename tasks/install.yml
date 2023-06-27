@@ -55,6 +55,7 @@
   make:
     chdir: "{{ php_download_dir }}"
     params: "--jobs={{ php_make_jobs }}"
+    target: all
 
 - name: PHP | Make install
   make:
