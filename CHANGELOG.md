@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Removed
 ### Changed
 
+- *[41](https://github.com/idealista/php_role/pull/41) Add target to make module to avoid `TypeError: 'NoneType' object is not iterable` error* @devnix
+
 ## [3.1.1](https://github.com/idealista/php_role/tree/3.1.1) (2022-03-04)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.0...3.1.1)
 ### Changed
