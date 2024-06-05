@@ -35,7 +35,7 @@
       shell: "set -o pipefail && printf {{ item.arg | default('\n') | quote }} | {{ php_install_dir }}/bin/pecl install {{ item.library }}-{{ item.version }}"
       args:
         executable: /bin/bash
-  when: php_pecl_library_installed is true and php_pecl_library_installed_version != item.version
+  when: php_pecl_library_installed is true and (php_pecl_library_installed_version != item.version or php_change_version)
 
 - name: PHP | Create Ini file for {{ item.name }} library
   template:
