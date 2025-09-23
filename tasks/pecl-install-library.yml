@@ -1,7 +1,7 @@
 ---
 
-- name: PHP | Pecl check if library {{ item.name }} exists
-  shell: "set -o pipefail && {{ php_install_dir }}/bin/pecl list | grep {{ item.name }}"
+- name: PHP | Pecl check if library exists for {{ item.name }}
+  ansible.builtin.shell: "set -o pipefail && {{ php_install_dir }}/bin/pecl list | grep {{ item.name }}"
   args:
     executable: /bin/bash
   register: php_pecl_library_system_info
@@ -9,36 +9,36 @@
   changed_when: false
 
 - name: PHP | Set Initial Fact
-  set_fact:
+  ansible.builtin.set_fact:
     php_pecl_library_installed: false
     php_pecl_library_installed_version: ""
 
 - name: PHP | Set Fact for version
-  set_fact:
+  ansible.builtin.set_fact:
     php_pecl_library_installed: true
     php_pecl_library_installed_version: "{{ php_pecl_library_system_info.stdout_lines[0].split()[1] }}"
   when: php_pecl_library_system_info.stdout | length > 0
 
-- name: PHP | Install {{ item.name }} library
-  shell: "set -o pipefail && printf {{ item.arg | default('\n') | quote  }} | {{ php_install_dir }}/bin/pecl install {{ item.library }}-{{ item.version }}"
+- name: PHP | Install library for {{ item.name }}
+  ansible.builtin.shell: "set -o pipefail && printf {{ item.arg | default('\n') | quote  }} | {{ php_install_dir }}/bin/pecl install {{ item.library }}-{{ item.version }}"
   args:
     executable: /bin/bash
   when: php_pecl_library_installed is false
 
-- name: PHP | Upgrade/Downgrade {{ item.name }} library
-  block:
-    - name: PHP | Uninstall {{ item.name }} because actual version is {{ php_pecl_library_installed_version }}
-      shell: "set -o pipefail && printf {{ item.arg | default('\n') | quote }} | {{ php_install_dir }}/bin/pecl uninstall {{ item.library }}"
-      args:
-        executable: /bin/bash
-    - name: PHP | Install {{ item.name }} version {{ item.version }}
-      shell: "set -o pipefail && printf {{ item.arg | default('\n') | quote }} | {{ php_install_dir }}/bin/pecl install {{ item.library }}-{{ item.version }}"
-      args:
-        executable: /bin/bash
+- name: PHP | Upgrade/Downgrade library for {{ item.name }}
   when: php_pecl_library_installed is true and php_pecl_library_installed_version != item.version
+  block:
+    - name: PHP | Uninstall old version {{ item.version }}
+      ansible.builtin.shell: "set -o pipefail && printf {{ item.arg | default('\n') | quote }} | {{ php_install_dir }}/bin/pecl uninstall {{ item.library }}"
+      args:
+        executable: /bin/bash
+    - name: PHP | Install library version {{ item.version }}
+      ansible.builtin.shell: "set -o pipefail && printf {{ item.arg | default('\n') | quote }} | {{ php_install_dir }}/bin/pecl install {{ item.library }}-{{ item.version }}"
+      args:
+        executable: /bin/bash
 
-- name: PHP | Create Ini file for {{ item.name }} library
-  template:
+- name: PHP | Create Ini file for library {{ item.name }}
+  ansible.builtin.template:
     src: "pecl_extension.ini.j2"
     dest: "{{ php_include_ini_scan_dir }}/99-{{ item.name }}_{{ item.type }}.ini"
   when: php_pecl_library_installed is false or php_pecl_library_installed_version != item.version
