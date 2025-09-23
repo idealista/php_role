@@ -84,9 +84,9 @@ molecule test -s fpm
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.9.9-green.svg)
-![Molecule](https://img.shields.io/badge/molecule-3.0.4-green.svg)
-![Goss](https://img.shields.io/badge/goss-0.3.13-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-6.4.0-green.svg)
+![Molecule](https://img.shields.io/badge/molecule-3.5.2-green.svg)
+![Goss](https://img.shields.io/badge/goss-0.3.16-green.svg)
 
 ## Versioning
 
