@@ -1,5 +1,5 @@
 ---
-- name: Restart php-fpm
+- name: restart php-fpm
   ansible.builtin.systemd:
     name: php-fpm
     state: restarted
