@@ -7,12 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Added
 ### Removed
 ### Changed
+- *[#43](https://github.com/idealista/php_role/issues/43) Change source download.* @javiercno
+
 ### Fixed
 
 ## [3.1.4](https://github.com/idealista/php_role/tree/3.1.4) (2022-06-19)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.3...3.1.4)
 ### Changed
-- *[#38](https://github.com/idealista/php_role/issues/38) Change source download.
+- *[#38](https://github.com/idealista/php_role/issues/38) Change source download. @smartinsempere*
 
 ## [3.1.3](https://github.com/idealista/php_role/tree/3.1.3) (2022-05-23)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.2...3.1.3)
@@ -22,7 +24,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [3.1.2](https://github.com/idealista/php_role/tree/3.1.2) (2022-05-12)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.1...3.1.2)
 ### Added
-- *[#32](https://github.com/idealista/php_role/issues/32) Add option arg in extension pecl.
+- *[#32](https://github.com/idealista/php_role/issues/32) Add option arg in extension pecl.* @emepege
 
 ## [3.1.1](https://github.com/idealista/php_role/tree/3.1.1) (2022-03-04)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.0...3.1.1)
@@ -32,7 +34,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [3.1.0](https://github.com/idealista/php_role/tree/3.1.0) (2022-02-07)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.0.0...3.1.0)
 ### Added
-- *[#23](https://github.com/idealista/php_role/issues/21) Debian bullseye support.*
+- *[#23](https://github.com/idealista/php_role/issues/21) Debian bullseye support.* @xtianae7
 ### Removed
 - Debian Stretch support
 
