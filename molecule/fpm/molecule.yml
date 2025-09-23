@@ -13,7 +13,7 @@ platforms:
     capabilities:
       - SYS_ADMIN
     volumes:
-      - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
+      - '/sys/fs/cgroup:/sys/fs/cgroup'
     tmpfs:
       - '/tmp'
       - '/run'
