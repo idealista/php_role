@@ -10,8 +10,9 @@ ansible = ">=6.0.0"
 molecule = "==3.5.1"
 docker = "==5.0.2"
 molecule-docker = "==1.0.2"
-ansible-lint = "==5.2.0"
+ansible-lint = "==6.0.2"
 yamllint = "==1.26.3"
+rich = "<13.0.0"
 
 [requires]
 python_version = "3.9"
