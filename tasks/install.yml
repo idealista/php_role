@@ -1,68 +1,68 @@
 ---
 
 - name: PHP | Install required libs
-  apt:
+  ansible.builtin.apt:
     name: "{{ php_required_libs }}"
     update_cache: true
     cache_valid_time: 86400
 
 - name: PHP | Ensure download dir
-  file:
+  ansible.builtin.file:
     path: "{{ php_download_dir }}"
     state: directory
 
 - name: PHP | Ensure curl is installed
-  apt:
+  ansible.builtin.apt:
     pkg: curl
     state: present
 
 - name: PHP | Download PHP source files
-  command: "curl {{ php_download_url }} -L -o /tmp/php-{{ php_version }}.tar.gz"
+  ansible.builtin.command: "curl {{ php_download_url }} -L -o /tmp/php-{{ php_version }}.tar.gz"
   tags: skip_ansible_lint
   # using curl as get_url receives 503 error - see https://github.com/idealista/php_role/issues/26
 
 - name: PHP | Extract PHP source files
-  unarchive:
+  ansible.builtin.unarchive:
     remote_src: true
     src: "/tmp/php-{{ php_version }}.tar.gz"
     dest: "{{ php_download_dir }}"
     extra_opts: --strip-components=1
 
 - name: PHP | Define extra compile-time options if defined
-  set_fact:
+  ansible.builtin.set_fact:
     php_compile_options_command: "{{ php_compile_options_command | default('') }} {{ '--' + item }}"
   with_items: "{{ php_compile_options }}"
   when: php_compile_options is defined
 
 - name: PHP | Add FPM to compile-time options
-  set_fact:
+  ansible.builtin.set_fact:
     php_compile_options_command: "{{ php_compile_options_command | default('') }} --enable-fpm"
   when: php_fpm_install
 
 - name: PHP | Create ini scan directory
-  file:
+  ansible.builtin.file:
     dest: "{{ php_include_ini_scan_dir }}"
     state: directory
 
 - name: PHP | Buildconf
-  command: ./buildconf --force
+  ansible.builtin.command: ./buildconf --force
   args:
     chdir: "{{ php_download_dir }}"
   tags: skip_ansible_lint
 
 - name: PHP | Configure installation
-  command: ./configure --prefix={{ php_install_dir }} {{ php_compile_options_command | default('') }}
+  ansible.builtin.command: ./configure --prefix={{ php_install_dir }} {{ php_compile_options_command | default('') }}
   args:
     chdir: "{{ php_download_dir }}"
   tags: skip_ansible_lint
 
 - name: PHP | Make
-  make:
+  ansible.builtin.make:
     chdir: "{{ php_download_dir }}"
     params: "--jobs={{ php_make_jobs }}"
     target: all
 
 - name: PHP | Make install
-  make:
+  ansible.builtin.make:
     chdir: "{{ php_download_dir }}"
     target: install

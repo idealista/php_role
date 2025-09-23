@@ -1,7 +1,7 @@
 ---
 
 - name: PHP | Configuring PHP-FPM service
-  systemd:
+  ansible.builtin.systemd:
     name: "php-fpm"
     state: "{{ php_fpm_service_started }}"
     enabled: "{{ php_fpm_service_enabled }}"

@@ -1,19 +1,19 @@
 ---
 
 - name: PHP | Create Pear tmp directory
-  file:
+  ansible.builtin.file:
     dest: "{{ php_pear_tmp_path }}"
     state: directory
 
 - name: PHP | Set Pear tmp directory
-  shell: "set -o pipefail && {{ php_install_dir }}/bin/pear config-set temp_dir {{ php_pear_tmp_path }}"
+  ansible.builtin.shell: "set -o pipefail && {{ php_install_dir }}/bin/pear config-set temp_dir {{ php_pear_tmp_path }}"
   args:
     executable: /bin/bash
   ignore_errors: no
   changed_when: false
 
 - name: PHP | Installing Pear packages
-  include_tasks: pecl-install-library.yml
+  ansible.builtin.include_tasks: pecl-install-library.yml
   vars:
     item: "{{ item }}"
   with_items: "{{ php_pear_packages }}"
