@@ -1,12 +1,12 @@
 ---
 
 - name: PHP | Template php.ini
-  template:
+  ansible.builtin.template:
     src: "{{ php_ini_configuration_template.src }}"
     dest: "{{ php_ini_configuration_template.dest }}"
 
 - name: PHP | Ensure php executable is symlinked into a standard path.
-  file:
+  ansible.builtin.file:
     src: "{{ php_install_dir }}/bin/php"
     dest: /usr/bin/php
     state: link
