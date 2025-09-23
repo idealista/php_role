@@ -2,7 +2,7 @@
 
 # PHP Ansible role
 
-[![Build Status](https://travis-ci.com/idealista/php_role.png)](https://travis-ci.com/idealista/php_role)
+[![Build Status](https://app.travis-ci.com/idealista/php_role.png)](https://app.travis-ci.com/github/idealista/php_role)
 
 This Ansible role installs PHP (optionally, with FPM enabled) in a Debian environment.
 
