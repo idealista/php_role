@@ -9,7 +9,7 @@ lint: |
 platforms:
   - name: phptestnode
     image: ${MOLECULE_DISTRO:-debian:bullseye-slim}
-    privileged: false
+    privileged: true
     capabilities:
       - SYS_ADMIN
     tmpfs:
