@@ -9,6 +9,8 @@ env:
   jobs:
     - MOLECULE_DISTRO=debian:buster-slim
     - MOLECULE_DISTRO=debian:bullseye-slim
+before_install:
+  - docker --version
 install:
   - pip install pipenv
   - pipenv sync
