@@ -12,6 +12,7 @@ env:
 install:
   - pip install pipenv
   - pipenv sync
+  - pipenv run ansible-galaxy collection install community.docker:1.8.0
 script:
   - pipenv run molecule test --all
 
