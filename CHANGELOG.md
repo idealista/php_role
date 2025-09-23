@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Added
 ### Removed
 ### Changed
-- *[#43](https://github.com/idealista/php_role/issues/43) Change source download.* @javiercno
+- *[#43](https://github.com/idealista/php_role/issues/43) Reinstall pecl extensión when change php version.* @javiercno
 
 ### Fixed
 
