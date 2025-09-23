@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 - *[#43](https://github.com/idealista/php_role/issues/43) Reinstall pecl extensión when change php version.* @javiercno
 
 ### Fixed
+- *[#42](https://github.com/idealista/php_role/pull/42) Replace deprecated `include` by a `include_tasks`* @devnix
 
 ## [3.1.4](https://github.com/idealista/php_role/tree/3.1.4) (2022-06-19)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.3...3.1.4)
@@ -25,6 +26,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.1...3.1.2)
 ### Added
 - *[#32](https://github.com/idealista/php_role/issues/32) Add option arg in extension pecl.* @emepege
+
+- *[41](https://github.com/idealista/php_role/pull/41) Add target to make module to avoid `TypeError: 'NoneType' object is not iterable` error* @devnix
 
 ## [3.1.1](https://github.com/idealista/php_role/tree/3.1.1) (2022-03-04)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.0...3.1.1)

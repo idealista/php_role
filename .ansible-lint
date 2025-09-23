@@ -7,5 +7,6 @@ parseable: true
 skip_list:
   - '204'
   - '208'
+  - no-changed-when  # Commands should not change things if nothing needs doing.
 use_default_rules: true
 verbosity: 1

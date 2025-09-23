@@ -1,50 +1,50 @@
 ---
 
 - name: PHP | Check composer version
-  command: "composer --version"
+  ansible.builtin.command: "composer --version"
   register: php_composer_check
   changed_when: false
   ignore_errors: true
 
 - name: PHP | Download composer installer
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ php_composer_installer_url }}"
     dest: "{{ php_composer_installer_path }}"
   when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
 
 - name: Get and verify composer checksum
+  when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
   block:
     - name: PHP | Calculate composer installer checksum
-      stat:
+      ansible.builtin.stat:
         path: "{{ php_composer_installer_path }}"
         checksum_algorithm: sha384
         get_checksum: yes
       register: installer_stat
 
     - name: PHP | Get composer install checksum
-      uri:
+      ansible.builtin.uri:
         url: "{{ php_composer_sha384_url }}"
         return_content: true
       register: installer_checksum
 
     - name: PHP | Verify composer installer checksum
-      fail:
+      ansible.builtin.fail:
         msg: "Failure, composer installer is not correct."
       when: installer_stat.stat.checksum != installer_checksum.content.split(' ')[0]
-  when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
 
 - name: PHP | Ensure composer install dir
-  file:
+  ansible.builtin.file:
     path: "{{ php_composer_install_dir }}"
     state: directory
   when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
 
 - name: PHP | Install composer
-  command: "php {{ php_composer_installer_path }} --filename=composer --install-dir={{ php_composer_install_dir }} --version={{ php_composer_version }}"
+  ansible.builtin.command: "php {{ php_composer_installer_path }} --filename=composer --install-dir={{ php_composer_install_dir }} --version={{ php_composer_version }}"
   when: php_composer_reinstall or php_composer_check is failed or php_composer_version not in php_composer_check.stdout
 
 - name: PHP | Link composer file
-  file:
+  ansible.builtin.file:
     src: "{{ php_composer_install_dir }}/composer"
     dest: "{{ php_composer_link_path }}"
     state: link
