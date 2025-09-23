@@ -1,8 +1,8 @@
-ansible==4.10.0
-molecule==3.4.0
-docker==4.4.4
-molecule-docker==0.2.4
+ansible==6.4.0
+ansible-compat==2.2.1
+molecule==3.5.2
+docker==6.0.0
+molecule-docker==1.1.0
 ansible-lint==5.1.3
 yamllint==1.26.3
-rich==10.16.2
-urllib3<2.0
+requests==2.28.1
