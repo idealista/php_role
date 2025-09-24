@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Removed
 ### Changed
 ### Fixed
+- *[#29](https://github.com/idealista/php_role/pull/29) Fix checking composer version if the current user is root* @devnix
 - *[#42](https://github.com/idealista/php_role/pull/42) Replace deprecated `include` by a `include_tasks`* @devnix
 
 ## [3.1.4](https://github.com/idealista/php_role/tree/3.1.4) (2022-06-19)
