@@ -26,7 +26,7 @@
   when: php_pecl_library_installed is false
 
 - name: PHP | Upgrade/Downgrade library for {{ item.name }}
-  when: php_pecl_library_installed is true and php_pecl_library_installed_version != item.version
+  when: php_pecl_library_installed is true and (php_pecl_library_installed_version != item.version or php_change_version)
   block:
     - name: PHP | Uninstall old version {{ item.version }}
       ansible.builtin.shell: "set -o pipefail && printf {{ item.arg | default('\n') | quote }} | {{ php_install_dir }}/bin/pecl uninstall {{ item.library }}"
