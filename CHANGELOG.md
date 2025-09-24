@@ -7,11 +7,19 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 ### Added
 ### Removed
 ### Changed
+
+### Fixed
+
+## [3.2.0](https://github.com/idealista/php_role/tree/3.2.0) (2025-09-24)
+## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.4...3.2.0)
+### Changed
 - *[#43](https://github.com/idealista/php_role/issues/43) Reinstall pecl extensión when change php version.* @javiercno
 
 ### Fixed
 - *[#29](https://github.com/idealista/php_role/pull/29) Fix checking composer version if the current user is root* @devnix
 - *[#42](https://github.com/idealista/php_role/pull/42) Replace deprecated `include` by a `include_tasks`* @devnix
+### Removed
+- Debian Buster support
 
 ## [3.1.4](https://github.com/idealista/php_role/tree/3.1.4) (2022-06-19)
 ## [Full Changelog](https://github.com/idealista/php_role/compare/3.1.3...3.1.4)
